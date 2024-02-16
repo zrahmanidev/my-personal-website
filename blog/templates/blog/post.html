@@ -1,0 +1,376 @@
+{% extends 'master.html' %}
+{% block title %}
+    صفحه جزییات مقاله
+{% endblock %}
+{% block content %}
+    <div id="id_blog" class="active" style="display: block; position: static; visibility: visible;">
+        <!-- start breadcumb -->
+        {% include 'shared/breadcrumb.html' %}
+        <!-- end breadcumb -->
+
+        <!-- start blog index -->
+        <div class="container_940">
+            <div class="grid_400">
+                <div class="sidebar_left">
+                    <!-- start Search -->
+                    <div>
+                        <form id="form_search">
+                            <input name="input_search" type="text"
+                                   onblur="if(this.value==''){this.value='Search Here'};"
+                                   onfocus="if(this.value=='Search Here'){this.value=''};" value="جستجو">
+                            <input type="submit" value="" name="input_submit">
+                            <div class="clear"></div>
+                        </form>
+
+                    </div>
+                    <!-- ends Search -->
+
+                    <!-- start Category -->
+                    {% include 'blog/categories_list.html' %}
+                    <!-- ends Category -->
+
+                    <!-- start Twitter -->
+                    <div class="padding_bottom_sidebar">
+                        <h3 class="h3_header_blog">توئیتر</h3>
+                        <div id="twitter_update_list_master">
+                            <div class="left" id="twitter_update_list">
+                                <div class="left" id="twitter_update_list_container">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <!-- ends Twitter -->
+                </div>
+            </div>
+            <div class="grid_640">
+                <div class="sidebar_right">
+
+
+                    <!-- start post 1 -->
+                    <div class="post">
+                        <div class="post_left">
+                            <div class="meta_date">
+
+                                <div class="post_type">
+                                    <div class="post_date">{{ post.published_at|date:"d ،l" }}</div>
+                                    <div class="post_year">{{ post.published_at|date:"Y" }}</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="post_right">
+                            <div class="post_feature">
+                                <img src="/uploads/{{ post.image }}" alt="" width="100%">
+                            </div>
+                            <div>
+                                <h2 class="post_title"><a href="single.html#id_blog" title="">{{ post.title }} </a></h2>
+
+                                <div class="meta_blog">
+                                    <div class="div_meta_blog">
+                                        <span class="meta_label">نوشته شده توسط</span> <span class="single-author"><a
+                                            rel="tag" href="#">مدیریت سایت</a></span> | <span
+                                            class="meta_label">برچسب : </span><span class="single-tag"><a rel="tag"
+                                                                                                          href="#">گالری</a>, <a
+                                            rel="tag" href="#">عکس</a>, <a rel="tag" href="#">عکس گالری</a></span>
+                                    </div>
+                                    <div class="div_comment_count">
+                                        <a class="comment_count" href="#" title="">10</a>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="post_text">
+                                    {{ post.body }}
+
+
+                                </div>
+                                <div class="mb_30">&nbsp;</div>
+                                <div class="clear"></div>
+
+                            </div>
+                            <!-- comment start -->
+                            <div class="ul_breadcumb_dots_single">
+                                <ul class="ul_breadcumb_single left">
+                                    <li class="cf_blog">نظرات({{ comments.count }})</li>
+                                </ul>
+                                <div class="ul_breadcumb_line right">
+                                    &nbsp;
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+                            <ol class="commentlist">
+                                {% for comment in comments %}
+                                    <li>
+                                        <div class="the_comment">
+                                            <div class="right comment_pic"><img src="{{ comment.image }}" alt="">
+                                            </div>
+                                            <div class="comment_box">
+                                                <div class="comment_author">{{ comment.user_id }}</div>
+                                                <div class="comment_text">{{ comment.text }}</div>
+                                                <div class="comment_attr">
+                                                    <div class="comment_date left">{{ comment.created_at }} |</div>
+                                                    <div class="comment_reply left">
+                                                        <a class="comment-reply-link" href="#" title="">پاسخ</a>
+                                                    </div>
+                                                    <div class="clear"></div>
+                                                </div>
+                                            </div>
+                                            <div class="clear"></div>
+                                        </div>
+                                    </li>
+                                    {#                                  <!------start sub_comment------->
+                                    <ol class="commentlist children">
+                                        {% for sub_comment in comment.postcomment_set.all %}
+
+                                            <li>
+                                                <div class="the_comment">
+                                                    <div class="right comment_pic"><img src="{{ sub_comment.image }}"
+                                                                                        alt="">
+                                                    </div>
+                                                    <div class="comment_box">
+                                                        <div class="comment_author">{{ sub_comment.user_id }}</div>
+                                                        <div class="comment_text">{{ sub_comment.text }}</div>
+                                                        <div class="comment_attr">
+                                                            <div class="comment_date left">{{ sub_comment.created_at }}
+                                                                |
+                                                            </div>
+                                                            <div class="comment_reply left">
+                                                                <a class="comment-reply-link" href="#" title="">پاسخ</a>
+                                                            </div>
+                                                            <div class="clear"></div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="clear"></div>
+                                                </div>
+                                            </li>
+                                            <!----------start sub_sub_comment---------->
+                                            <ol class="commentlist children">
+                                                {% for sub_sub_comment in sub_comment.postcomment_set.all %}
+
+                                                    <li>
+                                                        <div class="the_comment">
+                                                            <div class="right comment_pic"><img
+                                                                    src="{{ sub_sub_comment.avatar }}"
+                                                                    alt="">
+                                                            </div>
+                                                            <div class="comment_box">
+                                                                <div class="comment_author">{{ sub_sub_comment.user_id }}</div>
+                                                                <div class="comment_text">{{ sub_sub_comment.text }}</div>
+                                                                <div class="comment_attr">
+                                                                    <div class="comment_date left">{{ sub_sub_comment.created_at }}
+                                                                        |
+                                                                    </div>
+                                                                    <div class="comment_reply left">
+                                                                        <a class="comment-reply-link" href="#" title="">پاسخ</a>
+                                                                    </div>
+                                                                    <div class="clear"></div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="clear"></div>
+                                                        </div>
+                                                    </li>
+
+                                                {% endfor %}
+                                            </ol>
+                                            <!----------end sub_sub_comment---------->
+                                        {% endfor %}
+
+                                    </ol>
+                                {% endfor %}
+
+
+                                {#                                <ol class="children">#}
+                                {#                                    <li>#}
+                                {#                                        <div class="the_comment">#}
+                                {#                                            <div class="right comment_pic"><img src="images/user_comment.png"#}
+                                {#                                                                                alt=""></div>#}
+                                {#                                            <div class="comment_box">#}
+                                {#                                                <div class="comment_author">مسیح ایرانی</div>#}
+                                {#                                                <div class="comment_text">توضیحات خود را در این قسمت بنویسید.#}
+                                {#                                                    توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت#}
+                                {#                                                    بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات خود را در#}
+                                {#                                                    این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات#}
+                                {#                                                    خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید.#}
+                                {#                                                    توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت#}
+                                {#                                                    بنویسید.#}
+                                {#                                                </div>#}
+                                {#                                                <div class="comment_attr">#}
+                                {#                                                    <div class="comment_date left">ساعت 11:45 دوشنبه 4 آبان 91 |#}
+                                {#                                                    </div>#}
+                                {#                                                    <div class="comment_reply left">#}
+                                {#                                                        <a class="comment-reply-link" href="#" title="">پاسخ</a>#}
+                                {#                                                    </div>#}
+                                {#                                                    <div class="clear"></div>#}
+                                {#                                                </div>#}
+                                {#                                            </div>#}
+                                {#                                            <div class="clear"></div>#}
+                                {#                                        </div>#}
+                                {##}
+                                {#                                        <ol class="children">#}
+                                {#                                            <li>#}
+                                {#                                                <div class="the_comment">#}
+                                {#                                                    <div class="right comment_pic"><img#}
+                                {#                                                            src="images/user_comment.png" alt=""></div>#}
+                                {#                                                    <div class="comment_box">#}
+                                {#                                                        <div class="comment_author">مسیح ایرانی</div>#}
+                                {#                                                        <div class="comment_text">توضیحات خود را در این قسمت#}
+                                {#                                                            بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات خود#}
+                                {#                                                            را در این قسمت بنویسید. توضیحات خود را در این قسمت#}
+                                {#                                                            بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات خود#}
+                                {#                                                            را در این قسمت بنویسید. توضیحات خود را در این قسمت#}
+                                {#                                                            بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات خود#}
+                                {#                                                            را در این قسمت بنویسید. توضیحات خود را در این قسمت#}
+                                {#                                                            بنویسید.#}
+                                {#                                                        </div>#}
+                                {#                                                        <div class="comment_attr">#}
+                                {#                                                            <div class="comment_date left">ساعت 11:45 دوشنبه 4 آبان#}
+                                {#                                                                91 |#}
+                                {#                                                            </div>#}
+                                {#                                                            <div class="comment_reply left">#}
+                                {#                                                                <a class="comment-reply-link" href="#"#}
+                                {#                                                                   title="">پاسخ</a>#}
+                                {#                                                            </div>#}
+                                {#                                                            <div class="clear"></div>#}
+                                {#                                                        </div>#}
+                                {#                                                    </div>#}
+                                {#                                                    <div class="clear"></div>#}
+                                {#                                                </div>#}
+                                {#                                            </li>#}
+                                {#                                        </ol>#}
+                                {##}
+                                {#                                    </li>#}
+                                {#                                </ol>#}
+                                {#                                <ol class="children">#}
+                                {#                                    <li>#}
+                                {#                                        <div class="the_comment">#}
+                                {#                                            <div class="right comment_pic"><img src="images/user_comment.png"#}
+                                {#                                                                                alt=""></div>#}
+                                {#                                            <div class="comment_box">#}
+                                {#                                                <div class="comment_author">مسیح ایرانی</div>#}
+                                {#                                                <div class="comment_text">توضیحات خود را در این قسمت بنویسید.#}
+                                {#                                                    توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت#}
+                                {#                                                    بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات خود را در#}
+                                {#                                                    این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات#}
+                                {#                                                    خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید.#}
+                                {#                                                    توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت#}
+                                {#                                                    بنویسید.#}
+                                {#                                                </div>#}
+                                {#                                                <div class="comment_attr">#}
+                                {#                                                    <div class="comment_date left">ساعت 11:45 دوشنبه 4 آبان 91 |#}
+                                {#                                                    </div>#}
+                                {#                                                    <div class="comment_reply left">#}
+                                {#                                                        <a class="comment-reply-link" href="#" title="">پاسخ</a>#}
+                                {#                                                    </div>#}
+                                {#                                                    <div class="clear"></div>#}
+                                {#                                                </div>#}
+                                {#                                            </div>#}
+                                {#                                            <div class="clear"></div>#}
+                                {#                                        </div>#}
+                                {##}
+                                {#                                        <ol class="children">#}
+                                {#                                            <li>#}
+                                {#                                                <div class="the_comment">#}
+                                {#                                                    <div class="right comment_pic"><img#}
+                                {#                                                            src="images/user_comment.png" alt=""></div>#}
+                                {#                                                    <div class="comment_box">#}
+                                {#                                                        <div class="comment_author">مسیح ایرانی</div>#}
+                                {#                                                        <div class="comment_text">توضیحات خود را در این قسمت#}
+                                {#                                                            بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات خود#}
+                                {#                                                            را در این قسمت بنویسید. توضیحات خود را در این قسمت#}
+                                {#                                                            بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات خود#}
+                                {#                                                            را در این قسمت بنویسید. توضیحات خود را در این قسمت#}
+                                {#                                                            بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات خود#}
+                                {#                                                            را در این قسمت بنویسید. توضیحات خود را در این قسمت#}
+                                {#                                                            بنویسید.#}
+                                {#                                                        </div>#}
+                                {#                                                        <div class="comment_attr">#}
+                                {#                                                            <div class="comment_date left">ساعت 11:45 دوشنبه 4 آبان#}
+                                {#                                                                91 |#}
+                                {#                                                            </div>#}
+                                {#                                                            <div class="comment_reply left">#}
+                                {#                                                                <a class="comment-reply-link" href="#"#}
+                                {#                                                                   title="">پاسخ</a>#}
+                                {#                                                            </div>#}
+                                {#                                                            <div class="clear"></div>#}
+                                {#                                                        </div>#}
+                                {#                                                    </div>#}
+                                {#                                                    <div class="clear"></div>#}
+                                {#                                                </div>#}
+                                {#                                            </li>#}
+                                {#                                        </ol>#}
+                                {##}
+                                {#                                    </li>#}
+                                {#                                </ol>#}
+                                {#                                </li>#}
+                            </ol>
+
+                            {#                            <ol class="commentlist">#}
+                            {#                                {% for comment in comments %}#}
+                            {#                                    {% if comment.parent %}#}
+                            {#                                    <li>#}
+                            {#                                        <div class="the_comment">#}
+                            {##}
+                            {#                                            <div class="right comment_pic"><img src="{{ comment.image }}" alt="">#}
+                            {#                                            </div>#}
+                            {#                                            <div class="comment_box">#}
+                            {#                                                <div class="comment_author">{{ comment.user_id }}</div>#}
+                            {#                                                <div class="comment_text">{{ comment.text }}        </div>#}
+                            {#                                                <div class="comment_attr">#}
+                            {#                                                    <div class="comment_date left">{{ comment.created_at }}</div>#}
+                            {#                                                    <div class="comment_reply left">#}
+                            {#                                                        <a class="comment-reply-link" href="#"#}
+                            {#                                                           title="">{{ comment.parent }}</a>#}
+                            {#                                                    </div>#}
+                            {#                                                    <div class="clear"></div>#}
+                            {#                                                </div>#}
+                            {#                                            </div>#}
+                            {#                                            <div class="clear"></div>#}
+                            {#                                        </div>#}
+                            {##}
+                            {##}
+                            {#                                        <ol class="children">#}
+                            {#                                            {% for sub_comment in comments %}#}
+                            {#                                                {% if sub_comment.parent == comment.id %}#}
+                            {#                                                    <li>#}
+                            {#                                                        <div class="the_comment">#}
+                            {#                                                            <div class="right comment_pic"><img#}
+                            {#                                                                    src="{{ sub_comment.image }}"#}
+                            {#                                                                    alt=""></div>#}
+                            {#                                                            <div class="comment_box">#}
+                            {#                                                                <div class="comment_author">{{ sub_comment.user_id }}ی</div>#}
+                            {#                                                                <div class="comment_text">{{ sub_comment.text }}#}
+                            {#                                                                </div>#}
+                            {#                                                                <div class="comment_attr">#}
+                            {#                                                                    <div class="comment_date left">{{ sub_comment.created_at }}#}
+                            {#                                                                    </div>#}
+                            {#                                                                    <div class="comment_reply left">#}
+                            {#                                                                        <a class="comment-reply-link" href="#"#}
+                            {#                                                                           title="">پاسخ</a>#}
+                            {#                                                                    </div>#}
+                            {#                                                                    <div class="clear"></div>#}
+                            {#                                                                </div>#}
+                            {#                                                            </div>#}
+                            {#                                                            <div class="clear"></div>#}
+                            {#                                                        </div>#}
+                            {##}
+                            {#                                                    </li>#}
+                            {#                                                {% endif %}#}
+                            {#                                            {% endfor %}#}
+                            {#                                        </ol>#}
+                            {##}
+                            {#                                    </li>#}
+                            {#                                    {% endif %}#}
+                            {#                                {% endfor %}#}
+                            {#                            </ol>#}
+                            <!-- comment ends -->
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end post 1 -->
+
+                </div>
+            </div>
+            <div class="clear"></div>
+        </div>
+        <!-- end blog index -->
+    </div>
+{% endblock %}}

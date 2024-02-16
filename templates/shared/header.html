@@ -1,0 +1,25 @@
+	<div  id="header">
+			<div class="container_940">
+				<div class="grid_300" >
+					<div id="logo">
+						<a href="#id_home" title=""><h1>زهرا رحمانی</h1></a>
+						<h2>طراح سایت و برنامه نویس</h2>
+					</div>
+				</div>
+				<div class="grid_640">
+					<!-- start main menu -->
+					<div id="main_menu" class="left">
+						<ul id="ul_menu" class="left">
+							<li class="hide"><a class="icon_resume  hide" href="#id_home" title=""><span>خانه</span></a></li>
+							<li><a class="icon_resume" href="{% url 'resume_page' %}" title=""><span>رزومه من</span></a></li>
+							<li><a class="icon_blog {% block blog_menu_class %} {% endblock %}" href="{% url 'blog_page' %}" title=""><span>وبلاگ</span></a></li>
+							<li><a class="icon_portfolio" href="#id_portfolio" title=""><span>نمونه کارها</span></a></li>
+							<li><a class="icon_contact" href="{% url 'contact_page' %}" title=""><span>تماس با من</span></a></li>
+						</ul>
+						<div class="clear"></div>
+					</div>
+					<!-- ends main menu -->
+				</div>
+				<div class="clear"></div>
+			</div>
+		</div>

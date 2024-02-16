@@ -1,0 +1,571 @@
+{% extends 'master.html' %}
+{% load static %}
+{% block title %}
+    رزومه من
+{% endblock %}
+{% block content %}
+    <div class="container_940">
+        <div class="grid_400 vertical_bg">
+            <div class="sidebar_left">
+                <!-- start DESIGN SKILLS -->
+                <div class="h3_heading_l">
+                    <div class="icon_resume_1 right"></div>
+                    <div class="h3_desc_container right">
+                        <div class="h3_desc_div">
+                            <div class="h3_desc">بهترین های من</div>
+                            <div class="h3_title cf_resume">مهارت های طراحی</div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="padding_bottom_sidebar">
+
+                    <ul class="ul_skill">
+                        {% for skill in skills %}
+                            {% if skill.type == 'DE' %}
+                                <li>
+                                    <div class="skill_title">{{ skill.title }} </div>
+                                    <div>
+                                        <div class="bar_container">
+                                            <div style="width:{{ skill.percent }}%;" class="bar" title="expert">
+                                                <span class="bar_padding">&nbsp;</span>
+{#                                                <div style="max-width: 200px; margin: -32px 0px 0px 221px; display: block;"#}
+{#                                                     class="nb_tip_top nb_tiptip_holder">#}
+{#                                                    <div class="nb_tiptip_arrow"#}
+{#                                                         style="margin-left: 16px; margin-top: 24px;">#}
+{#                                                        <div class="nb_tiptip_arrow_inner"></div>#}
+{#                                                    </div>#}
+{#                                                    <div class="nb_tiptip_content" style="width: 29px;">expert</div>#}
+{#                                                </div>#}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                <!-- ends DESIGN SKILLS -->
+
+                <!-- start PROGRAMMING SKILLS -->
+                <div class="h3_heading_l">
+                    <div class="icon_resume_2 right"></div>
+                    <div class="h3_desc_container right">
+                        <div class="h3_desc_div">
+                            <div class="h3_desc">بهترین های من</div>
+                            <div class="h3_title cf_resume">مهارت برنامه نویسی</div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="padding_bottom_sidebar">
+                    <ul class="ul_skill">
+                        {% for skill in skills %}
+                            {% if skill.type == "PR" %}
+                                <li>
+                                    <div class="skill_title">{{ skill.title }}</div>
+                                    <div>
+                                        <div class="bar_container">
+                                            <div style="width:{{ skill.percent }}%;" class="bar" title="very good"><span
+                                                    class="bar_padding">&nbsp;</span>
+{#                                                <div style="max-width: 200px; margin: -32px 0px 0px 214px; display: block;"#}
+{#                                                     class="nb_tip_top nb_tiptip_holder">#}
+{#                                                    <div class="nb_tiptip_arrow"#}
+{#                                                         style="margin-left: 23px; margin-top: 24px;">#}
+{#                                                        <div class="nb_tiptip_arrow_inner"></div>#}
+{#                                                    </div>#}
+{#                                                    <div class="nb_tiptip_content" style="width: {{ skill.percent }};">very good</div>#}
+{#                                                </div>#}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endif %}
+
+                        {% endfor %}
+
+                    </ul>
+                </div>
+                <!-- ends PROGRAMMING SKILLS -->
+
+                <!-- start AWARDS -->
+                <div class="h3_heading_l">
+                    <div class="icon_resume_3 right"></div>
+                    <div class="h3_desc_container right">
+                        <div class="h3_desc_div">
+                            <div class="h3_desc">بهترین های من</div>
+                            <div class="h3_title cf_resume">افتخارات من</div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div class="padding_bottom_sidebar">
+                    <ul class="ul_award">
+                        {% for honors in items %}
+                            {% if honors.type == "HO" %}
+                                <li>
+                                    <div class="award_title"> {{ honors.title }}</div>
+                                    <div class="award_subtitle">{{ honors.subtitle }}</div>
+                                    <p>{{ honors.description }}</p>
+                                </li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+                <!-- ends AWARDS -->
+
+
+                <!-- start DOWNLOAD RESUME -->
+                <div class="padding_bottom_sidebar">
+                    <ul class="ul_download_resume">
+                        <li>
+                            <a class="a_download_resume_icon" href="#" title=""></a>
+                        </li>
+                        <li>
+                            <a class="a_download_resume" href="#" title="">دانلود رزومه</a>
+                        </li>
+                    </ul>
+                    <div class="clear"></div>
+                </div>
+                <!-- end DOWNLOAD RESUME -->
+            </div>
+        </div>
+        <div class="grid_640">
+            <div class="sidebar_right">
+
+                <!-- start EDUCATION -->
+                <div class="h3_heading_r">
+                    <div class="icon_resume_4 resume_line right"></div>
+                    <div class="h3_desc_container right">
+                        <div class="h3_desc_div">
+                            <div class="h3_desc">تاریخچه</div>
+                            <div class="h3_title cf_resume">تحصیلات</div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div>
+                    <ul class="ul_questions">
+
+                        {% for res in items %}
+                            {% if res.type == 'ED' %}
+                                <li>
+                                    <div class="answer_container">
+                                        <i class="plus_minus"></i>
+                                        <div class="answer_year">
+                                            <div class="year_1">{{ res.from_date|date:"Y" }}</div>
+                                            <div>-</div>
+                                            <div class="year_2">{{ res.to_date|date:"Y M" }}</div>
+                                        </div>
+                                        <div class="answer_title">
+                                            <div class="answer_t1">{{ res.title }} </div>
+                                            <div class="answer_t2">{{ res.subtitle }}</div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="answer_desc">
+                                        <p>  {{ res.description }}</p>
+                                    </div>
+                                </li>
+                            {% endif %}
+
+                        {% endfor %}
+
+
+                    </ul>
+                </div>
+                <!-- end EDUCATION -->
+
+                <!--- start WORK EXPERIENCE -->
+                <div class="h3_heading_r">
+                    <div class="icon_resume_5 resume_line right"></div>
+                    <div class="h3_desc_container right">
+                        <div class="h3_desc_div">
+                            <div class="h3_desc">تجربیات</div>
+                            <div class="h3_title cf_resume">کاری من</div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div>
+                    <ul class="ul_questions">
+                        {% for ress in items %}
+                            {% if ress.type == 'WO' %}
+                                <li>
+                                    <div class="answer_container">
+                                        <i class="plus_minus"></i>
+                                        <div class="answer_year">
+                                            <div class="year_1">{{ ress.from_date|date:"Y" }}</div>
+                                            <div>-</div>
+                                            <div class="year_2">{{ ress.from_date|date:"M D" }}</div>
+                                        </div>
+                                        <div class="answer_title">
+                                            <div class="answer_t1">{{ ress.title }}  </div>
+                                            <div class="answer_t2">{{ ress.subtitle }}</div>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="answer_desc">
+                                        <p>{{ ress.description }}</p>
+                                    </div>
+                                </li>
+                            {% endif %}
+
+
+                        {% endfor %}
+
+                    </ul>
+                </div>
+                <!--- end WORK EXPERIENCE -->
+
+                <!-- start WORK EXPERIENCE -->
+                <div class="h3_heading_r">
+                    <div class="icon_resume_6 resume_line right"></div>
+                    <div class="h3_desc_container right">
+                        <div class="h3_desc_div">
+                            <div class="h3_desc">لیست</div>
+                            <div class="h3_title cf_resume">مشتریان ما</div>
+                        </div>
+
+                    </div>
+                    <div class="client_prev_next left">
+                        <a class="right" href="#" id="client_next"></a>
+                        <a class="right" href="#" id="client_prev"></a>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <div>
+                    <div id="timeline">
+                        <ul id="dates" style="width: 1220px; margin-left: 0px;">
+                            <li>
+                                <a href="#client_1">
+                                    <span class="date">25 مهر</span>
+                                    <span class="year">1390</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#client_2">
+                                    <span class="date">20 شهریور</span>
+                                    <span class="year">1390</span>
+                                </a>
+                            </li>
+                            <li class="selected">
+                                <a href="#client_3" class="selected">
+                                    <span class="date">4 آبان</span>
+                                    <span class="year">1391</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#client_4">
+                                    <span class="date">3 آذر</span>
+                                    <span class="year">1391</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#client_5">
+                                    <span class="date">10 آبان </span>
+                                    <span class="year">1391</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#client_6">
+                                    <span class="date">4 دی</span>
+                                    <span class="year">1391</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#client_7">
+                                    <span class="date">30 اسفند</span>
+                                    <span class="year">1391</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#client_8">
+                                    <span class="date">6 مرداد</span>
+                                    <span class="year">1391</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#client_9">
+                                    <span class="date">22 آبان</span>
+                                    <span class="year">1391</span>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#client_10">
+                                    <span class="date">3 خرداد</span>
+                                    <span class="year">1391</span>
+                                </a>
+                            </li>
+                        </ul>
+                        <ul id="issues" style="width: 6100px; margin-left: -1220px;">
+                            <li id="client_1" style="opacity: 0.2;">
+                                <div class="arrow-up"></div>
+                                <div class="div_client">
+                                    <div class="div_1_2">
+                                        <div class="div_client_padding">
+                                            <div class="text_align_center mt_50">
+                                                <img src="images/resume/client/themeforest.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="div_1_2_last">
+                                        <div class="div_client_padding">
+                                            <p>توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید.
+                                                توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت
+                                                بنویسید. </p>
+                                            <div class="div_client_info">
+                                                <div><label>شغل :</label> <span>طراح سایت</span></div>
+                                                <div><label>حقوق :</label> <span>400000 </span></div>
+                                                <div><label>مدت زمان :</label> <span>یک ماه</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="clear"></div>
+                            </li>
+                            <li id="client_2" style="opacity: 0.2;">
+                                <div class="arrow-up"></div>
+                                <div class="div_client">
+                                    <div class="div_1_2">
+                                        <div class="div_client_padding">
+                                            <div class="text_align_center mt_50">
+                                                <img src="images/resume/client/graphicriver.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="div_1_2_last">
+                                        <div class="div_client_padding">
+                                            <p>توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید.
+                                                توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت
+                                                بنویسید. </p>
+                                            <div class="div_client_info">
+                                                <div><label>شغل :</label> <span>طراح سایت</span></div>
+                                                <div><label>حقوق :</label> <span>4000000 </span></div>
+                                                <div><label>مدت زمان :</label> <span>یک ماه</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="clear"></div>
+                            </li>
+                            <li id="client_3" class="selected" style="opacity: 1;">
+                                <div class="arrow-up"></div>
+                                <div class="div_client">
+                                    <div class="div_1_2">
+                                        <div class="div_client_padding">
+                                            <div class="text_align_center mt_50">
+                                                <img src="images/resume/client/photodune.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="div_1_2_last">
+                                        <div class="div_client_padding">
+                                            <p>توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید.
+                                                توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت
+                                                بنویسید. </p>
+                                            <div class="div_client_info">
+                                                <div><label>شغل :</label> <span>طراح سایت</span></div>
+                                                <div><label>حقوق :</label> <span>4000000 </span></div>
+                                                <div><label>مدت زمان :</label> <span>یک ماه</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="clear"></div>
+                            </li>
+                            <li id="client_4" style="opacity: 0.2;">
+                                <div class="arrow-up"></div>
+                                <div class="div_client">
+                                    <div class="div_1_2">
+                                        <div class="div_client_padding">
+                                            <div class="text_align_center mt_50">
+                                                <img src="images/resume/client/videohive.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="div_1_2_last">
+                                        <div class="div_client_padding">
+                                            <p>توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید.
+                                                توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت
+                                                بنویسید. </p>
+                                            <div class="div_client_info">
+                                                <div><label>شغل :</label> <span>طراح سایت</span></div>
+                                                <div><label>حقوق :</label> <span>4000000 </span></div>
+                                                <div><label>مدت زمان :</label> <span>یک ماه</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="clear"></div>
+                            </li>
+                            <li id="client_5" style="opacity: 0.2;">
+                                <div class="arrow-up"></div>
+                                <div class="div_client">
+                                    <div class="div_1_2">
+                                        <div class="div_client_padding">
+                                            <div class="text_align_center mt_50">
+                                                <img src="images/resume/client/codecanyon.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="div_1_2_last">
+                                        <div class="div_client_padding">
+                                            <p>توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید.
+                                                توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت
+                                                بنویسید. </p>
+                                            <div class="div_client_info">
+                                                <div><label>شغل :</label> <span>طراح سایت</span></div>
+                                                <div><label>حقوق :</label> <span>4000000 </span></div>
+                                                <div><label>مدت زمان :</label> <span>یک ماه</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="clear"></div>
+                            </li>
+                            <li id="client_6" style="opacity: 0.2;">
+                                <div class="arrow-up"></div>
+                                <div class="div_client">
+                                    <div class="div_1_2">
+                                        <div class="div_client_padding">
+                                            <div class="text_align_center mt_50">
+                                                <img src="images/resume/client/3docean.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="div_1_2_last">
+                                        <div class="div_client_padding">
+                                            <p>توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید.
+                                                توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت
+                                                بنویسید. </p>
+                                            <div class="div_client_info">
+                                                <div><label>شغل :</label> <span>طراح سایت</span></div>
+                                                <div><label>حقوق :</label> <span>4000000 </span></div>
+                                                <div><label>مدت زمان :</label> <span>یک ماه</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="clear"></div>
+                            </li>
+                            <li id="client_7" style="opacity: 0.2;">
+                                <div class="arrow-up"></div>
+                                <div class="div_client">
+                                    <div class="div_1_2">
+                                        <div class="div_client_padding">
+                                            <div class="text_align_center mt_50">
+                                                <img src="images/resume/client/activeden.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="div_1_2_last">
+                                        <div class="div_client_padding">
+                                            <p>توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید.
+                                                توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت
+                                                بنویسید. </p>
+                                            <div class="div_client_info">
+                                                <div><label>شغل :</label> <span>طراح سایت</span></div>
+                                                <div><label>حقوق :</label> <span>4000000 </span></div>
+                                                <div><label>مدت زمان :</label> <span>یک ماه</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="clear"></div>
+                            </li>
+                            <li id="client_8" style="opacity: 0.2;">
+                                <div class="arrow-up"></div>
+                                <div class="div_client">
+                                    <div class="div_1_2">
+                                        <div class="div_client_padding">
+                                            <div class="text_align_center mt_50">
+                                                <img src="images/resume/client/themeforest.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="div_1_2_last">
+                                        <div class="div_client_padding">
+                                            <p>توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید.
+                                                توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت
+                                                بنویسید. </p>
+                                            <div class="div_client_info">
+                                                <div><label>شغل :</label> <span>طراح سایت</span></div>
+                                                <div><label>حقوق :</label> <span>4000000 </span></div>
+                                                <div><label>مدت زمان :</label> <span>یک ماه</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="clear"></div>
+                            </li>
+                            <li id="client_9" style="opacity: 0.2;">
+                                <div class="arrow-up"></div>
+                                <div class="div_client">
+                                    <div class="div_1_2">
+                                        <div class="div_client_padding">
+                                            <div class="text_align_center mt_50">
+                                                <img src="images/resume/client/photodune.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="div_1_2_last">
+                                        <div class="div_client_padding">
+                                            <p>توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید.
+                                                توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت
+                                                بنویسید. </p>
+                                            <div class="div_client_info">
+                                                <div><label>شغل :</label> <span>طراح سایت</span></div>
+                                                <div><label>حقوق :</label> <span>4000000 </span></div>
+                                                <div><label>مدت زمان :</label> <span>یک ماه</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="clear"></div>
+                            </li>
+                            <li id="client_10" style="opacity: 0.2;">
+                                <div class="arrow-up"></div>
+                                <div class="div_client">
+                                    <div class="div_1_2">
+                                        <div class="div_client_padding">
+                                            <div class="text_align_center mt_50">
+                                                <img src="images/resume/client/themeforest.png" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="div_1_2_last">
+                                        <div class="div_client_padding">
+                                            <p>توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید.
+                                                توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت
+                                                بنویسید. </p>
+                                            <div class="div_client_info">
+                                                <div><label>شغل :</label> <span>طراح سایت</span></div>
+                                                <div><label>حقوق :</label> <span>4000000 </span></div>
+                                                <div><label>مدت زمان :</label> <span>یک ماه</span></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                                <div class="clear"></div>
+                            </li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                </div>
+                <!-- end WORK EXPERIENCE -->
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+{% endblock %}

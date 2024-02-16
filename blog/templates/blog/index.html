@@ -1,0 +1,111 @@
+{% extends 'master.html' %}
+{% block title %}
+    وبلاگ شخصی
+{% endblock %}
+{% load static %}
+{% block blog_menu_class %}active{% endblock %}
+{% block content %}
+    {% include 'shared/breadcrumb.html' %}
+    <div class="container_940">
+        <div class="grid_400 vertical_bg">
+            <div class="sidebar_left">
+                <!-- start Search -->
+                <div>
+                    <form id="form_search">
+                        <input name="input_search" type="text" onblur="if(this.value==''){this.value='Search Here'};"
+                               onfocus="if(this.value=='Search Here'){this.value=''};" value="جستجو">
+                        <input type="submit" value="" name="input_submit">
+                        <div class="clear"></div>
+                    </form>
+
+                </div>
+                <!-- ends Search -->
+
+                <!-- start Category -->
+                {% include 'blog/categories_list.html' %}
+
+                <!-- ends Category -->
+
+                <!-- start Twitter -->
+                <div class="padding_bottom_sidebar">
+                    <h3 class="h3_header_blog">توئیتر</h3>
+                    <div id="twitter_update_list_master">
+                        <div class="left" id="twitter_update_list">
+                            <div class="left" id="twitter_update_list_container">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                <!-- ends Twitter -->
+            </div>
+        </div>
+        <div class="grid_640">
+            <div class="sidebar_right">
+
+                <div id="post_index">
+                    {% for post in posts %}
+                        <!-- start post 1 -->
+                        <div class="post">
+                            <div class="post_left">
+                                <div class="meta_date">
+                                    <div class="post_type">
+                                        <div class="post_date">{{ post.created_at|date:"d ،l" }}</div>
+                                        <div class="post_year">{{ post.created_at|date:"Y" }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="post_right">
+                                <div class="post_feature">
+                                    <img src="/uploads/{{ post.image }}" alt="" width="100%">
+                                </div>
+                                <div>
+                                    <h2 class="post_title"><a href="single.html#id_blog" title="">{{ post.title }}</a></h2>
+
+                                    <div class="meta_blog">
+                                        <div class="div_meta_blog">
+                                            <span class="meta_label">نوشته شده توسط</span> <span
+                                                class="single-author"><a rel="tag" href="#">مدیریت سایت</a></span> |
+                                            <span class="meta_label">برچسب : </span><span class="single-tag"><a
+                                                rel="tag" href="#">گالری</a>, <a rel="tag" href="#">عکس</a>, <a
+                                                rel="tag" href="#">عکس گالری</a></span>
+                                        </div>
+                                        <div class="div_comment_count">
+                                            <a class="comment_count" href="#" title="">10</a>
+                                        </div>
+                                        <div class="clear"></div>
+                                    </div>
+                                    <div class="post_text">
+                                        <p>
+                                            {{ post.short_description  }}
+                                        </p>
+                                    </div>
+                                    <a class="read_more left" href="{{ post.get_absolute_url }}" title="">بیشتر بخوانید</a>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <!-- end post 1 -->
+                    {% endfor %}
+
+
+
+
+
+                    <!-- start pagination -->
+                    <div class="post_pagination">
+                        <ul>
+                            <li><a title="" href="#" class="active">1</a></li>
+                            <li><a title="" href="#">2</a></li>
+                            <li><a title="" href="#">3</a></li>
+                        </ul>
+                        <div class="clear"></div>
+                    </div>
+                    <!-- end pagination -->
+                </div>
+            </div>
+        </div>
+        <div class="clear"></div>
+    </div>
+{% endblock %}
