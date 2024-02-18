@@ -1,0 +1,23 @@
+{
+  "platform": "django",
+  "django": {
+    "pythonVersion": "3.11",
+    "collectStatic": true,
+    "compileMessages": false,
+    "timezone": "Asia/Tehran",
+    "mirror": true,
+    "geospatial": false
+  },
+  "app": "app_name",
+  "disks": [
+    {
+      "name": "uploads",
+      "mountTo": "uploads"
+    },
+    {
+      "name": "temp",
+      "mountTo": "/tmp"
+    }
+  ]
+}
+  
