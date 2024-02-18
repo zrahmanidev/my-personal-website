@@ -1,2 +1,13 @@
 Pillow
 python-dotenv
+Django
+mysqlclient
+psycopg2-binary
+python-dotenv
+django-ckeditor
+django-jalali
+djangorestframework
+qrcode
+Pillow
+dj-database-url
+persian-tools
