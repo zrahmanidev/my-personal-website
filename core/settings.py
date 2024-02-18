@@ -91,7 +91,7 @@ DATABASES = {
     #     'HOST': os.getenv('DATABASE_HOST'),
     #     'PORT': os.getenv('DATABASE_PORT'),
     # }
-'default': dj_database_url.copm mnfig(default=os.environ.get('DATABASE_URL'))
+'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 }
 
 # Password validation
