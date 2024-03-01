@@ -8,16 +8,18 @@ from blog.models import Category, Post, PostComment
 # Create your views here.
 class PostListview(ListView):
     model = Post
+    context_object_name = 'posts'
     paginate_by = 1
     template_name = 'blog/index.html'
 
     def get_context_data(self, *args, **kwargs):
-        posts = Post.objects.all()
-        categories = Category.objects.all()
-        context = {
-            'posts': posts,
-            'categories': categories
-        }
+        context = super(PostListview, self).get_context_data()
+        # context['posts'] = Post.objects.all().order_by('published_at')[:1]
+        context['categories'] = Category.objects.all()
+        # context = {
+        #     'posts': posts,
+        #     'categories': categories
+        # }
         return context
 
 

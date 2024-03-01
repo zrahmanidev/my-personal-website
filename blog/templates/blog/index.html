@@ -40,9 +40,38 @@
                 <!-- ends Twitter -->
             </div>
         </div>
+    {% if is_paginated %}
+                    {#                        <div class="paging">#}
+                    <div class="post_pagination">
+                        <ul>
+                            {% if page_obj.has_previous %}
+                                <li>
+                                    <a href="?page=1">&laquo;</a>
+                                </li>
+                                <li>
+                                    <a href="?page={{ page_obj.previous_page_number }}" dir="ltr"
+                                       title="قبلی" class="inactive">{{ page_obj.previous_page_number }}</a>
+                                </li>
+                            {% endif %}
+                            <li>
+                                <span class="current">{{ page_obj.number }}</span>
+                            </li>
+                            {% if page_obj.has_next %}
+                                <li>
+                                    <a href="?page={{ page_obj.next_page_number }}" dir="ltr"
+                                       title="بعدی">{{ page_obj.next_page_number }}</a>
+                                </li>
+                                <li>
+                                    <a href="?page={{ page_obj.paginator.num_pages }}" dir="rtl"
+                                       title="آخرین">&raquo;</a>
+                                </li>
+                            {% endif %}
+                        </ul>
+                        {#                            </div>#}
+                    </div>
+                {% endif %}
         <div class="grid_640">
             <div class="sidebar_right">
-
                 <div id="post_index">
                     {% for post in posts %}
                         <!-- start post 1 -->
@@ -60,7 +89,8 @@
                                     <img src="/uploads/{{ post.image }}" alt="" width="100%">
                                 </div>
                                 <div>
-                                    <h2 class="post_title"><a href="single.html#id_blog" title="">{{ post.title }}</a></h2>
+                                    <h2 class="post_title"><a href="single.html#id_blog" title="">{{ post.title }}</a>
+                                    </h2>
 
                                     <div class="meta_blog">
                                         <div class="div_meta_blog">
@@ -77,10 +107,11 @@
                                     </div>
                                     <div class="post_text">
                                         <p>
-                                            {{ post.short_description  }}
+                                            {{ post.short_description }}
                                         </p>
                                     </div>
-                                    <a class="read_more left" href="{{ post.get_absolute_url }}" title="">بیشتر بخوانید</a>
+                                    <a class="read_more left" href="{{ post.get_absolute_url }}" title="">بیشتر
+                                        بخوانید</a>
                                     <div class="clear"></div>
                                 </div>
                             </div>
@@ -94,15 +125,47 @@
 
 
                     <!-- start pagination -->
-                    <div class="post_pagination">
-                        <ul>
-                            <li><a title="" href="#" class="active">1</a></li>
-                            <li><a title="" href="#">2</a></li>
-                            <li><a title="" href="#">3</a></li>
-                        </ul>
-                        <div class="clear"></div>
-                    </div>
+                    {#                    <div class="post_pagination">#}
+                    {#                        <ul>#}
+                    {#                            <li><a title="" href="#" class="active">1</a></li>#}
+                    {#                            <li><a title="" href="#">2</a></li>#}
+                    {#                            <li><a title="" href="#">3</a></li>#}
+                    {#                        </ul>#}
+                    {#                        <div class="clear"></div>#}
+                    {#                    </div>#}
                     <!-- end pagination -->
+                    <!--NEW PAGINATION-->
+                    {% if is_paginated %}
+                        {#                        <div class="paging">#}
+                        <div class="post_pagination">
+                            <ul>
+                                {% if page_obj.has_previous %}
+                                    <li>
+                                        <a href="?page=1">&laquo;</a>
+                                    </li>
+                                    <li>
+                                        <a href="?page={{ page_obj.previous_page_number }}" dir="ltr"
+                                           title="قبلی" class="inactive">{{ page_obj.previous_page_number }}</a>
+                                    </li>
+                                {% endif %}
+                                <li>
+                                    <span class="current">{{ page_obj.number }}</span>
+                                </li>
+                                {% if page_obj.has_next %}
+                                    <li>
+                                        <a href="?page={{ page_obj.next_page_number }}" dir="ltr"
+                                           title="بعدی">{{ page_obj.next_page_number }}</a>
+                                    </li>
+                                    <li>
+                                        <a href="?page={{ page_obj.paginator.num_pages }}" dir="rtl"
+                                           title="آخرین">&raquo;</a>
+                                    </li>
+                                {% endif %}
+                            </ul>
+                            {#                            </div>#}
+                        </div>
+                    {% endif %}
+                    <!--END NEW PAGINATION-->
                 </div>
             </div>
         </div>
