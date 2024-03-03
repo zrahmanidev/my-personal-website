@@ -5,7 +5,24 @@ from django.core.validators import MinValueValidator, MaxValueValidator
 # Create your models here.
 
 class About(models.Model):
-    pass
+    first_name = models.CharField(max_length=300, null=True, blank=True, verbose_name='نام')
+    last_name = models.CharField(max_length=300, null=True, blank=True, verbose_name='نام خانوادگی')
+    nick_name = models.CharField(max_length=300, null=True, blank=True, verbose_name='نام مستعار')
+    email = models.EmailField(max_length=200, null=True, blank=True, verbose_name='ایمیل')
+    address = models.CharField(max_length=500, null=True, blank=True, verbose_name='آدرس')
+    phone = models.CharField(max_length=100, null=True, blank=True, verbose_name='موبایل')
+    web = models.CharField(max_length=200, null=True, blank=True, verbose_name='سایت')
+    Entertainment = models.CharField(max_length=300, null=True, blank=True, verbose_name='سرگرمی')
+    fax = models.CharField(max_length=300, null=True, blank=True, verbose_name='فکس')
+    birthday = models.CharField(max_length=300, null=True, blank=True, verbose_name='تاریخ تولد')
+    employ = models.CharField(max_length=300, null=True, blank=True, verbose_name='وضعیت استخدام')
+
+    class Meta:
+        verbose_name = ' درباره'
+        verbose_name_plural = 'درباره'
+
+    def __str__(self):
+        return self.nick_name
 
 
 class Resume(models.Model):

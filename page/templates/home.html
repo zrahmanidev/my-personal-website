@@ -53,18 +53,18 @@
 						<div class="one_third">
 							<ul class="ul_info">
 								<li>
-									<div class="label">نام </div>
-									<div class="span">زهرا رحمانی</div>
+									<div class="label">نام</div>
+									<div class="span">{{ about.first_name}} {{about.last_name }}</div>
 									<div class="clear"></div>
 								</li>
 								<li>
 									<div class="label">تلفن</div>
-									<div class="span">09385243470</div>
+									<div class="span">{{ about.phone}}</div>
 									<div class="clear"></div>
 								</li>
 								<li>
 									<div class="label">وب</div>
-									<div class="span">www.ZahraRahmani.com</div>
+									<div class="span">{{ about.web }}</div>
 									<div class="clear"></div>
 								</li>
 							</ul>
@@ -73,17 +73,17 @@
 							<ul class="ul_info">
 								<li>
 									<div class="label">تولد</div>
-									<div class="span">11 آبان 1368</div>
+									<div class="span">{{ about.birthday }}</div>
 									<div class="clear"></div>
 								</li>
 								<li>
 									<div class="label">فکس</div>
-									<div class="span">62 813 98123139</div>
+									<div class="span">{{ about.fax|default:'-' }}</div>
 									<div class="clear"></div>
 								</li>
 								<li>
 									<div class="label">استخدام</div>
-									<div class="span">آزاد</div>
+									<div class="span">{{ about.employ }}</div>
 									<div class="clear"></div>
 								</li>
 							</ul>
@@ -92,17 +92,17 @@
 							<ul class="ul_info">
 								<li>
 									<div class="label">سرگرمی</div>
-									<div class="span">شنا و ماهی گیری</div>
+									<div class="span">{{ about.Entertainment|default:"-" }}</div>
 									<div class="clear"></div>
 								</li>
 								<li>
 									<div class="label">ایمیل</div>
-									<div class="span">INFO@zahrarahmani.com</div>
+									<div class="span">{{ about.email }}</div>
 									<div class="clear"></div>
 								</li>
 								<li>
 									<div class="label">آدرس</div>
-									<div class="span">تهران، خیابان ولیعصر، کوچه 12 پلاک 2</div>
+									<div class="span">{{ about.address }}</div>
 									<div class="clear"></div>
 								</li>
 							</ul>
