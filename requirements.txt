@@ -11,3 +11,4 @@ qrcode
 Pillow
 dj-database-url
 persian-tools
+django-simple-captcha
