@@ -23,21 +23,31 @@ class ContactUsForm(forms.ModelForm):
     )
     subject = forms.CharField(label='عنوان', widget=forms.TextInput(attrs={
         'class': 'clear full',
-        'placeholder': 'موضوع'
-    })
+        'placeholder': 'موضوع',
+        'required': 'required'
+
+    }),
+                              required=True
+
                               )
     email = forms.EmailField(label='ایمیل', widget=forms.EmailInput(
         attrs={
             'class': 'clear full',
-            'placeholder': 'ایمیل'
+            'placeholder': 'ایمیل',
+            'required': 'required'
+
         }))
     message = forms.CharField(label='متن پیام', widget=forms.Textarea(
         attrs={
             'class': 'clear full',
             'placeholder': 'متن پیام',
+            'required': 'required'
+
             # 'rows': 5
             # 'id': 'message'
-        }
+        },
+        required=True
+
     ))
     captcha = CaptchaField(
         widget=CustomCaptchaTextInput,
