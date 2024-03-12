@@ -22,13 +22,9 @@ class ContactUsForm(forms.ModelForm):
         required=True
     )
     subject = forms.CharField(label='عنوان', widget=forms.TextInput(attrs={
-        'class': 'clear full',
-        'placeholder': 'موضوع',
-        'required': 'required'
-
+        'class': 'clear full', 'placeholder': 'موضوع', 'required': 'required'
     }),
                               required=True
-
                               )
     email = forms.EmailField(label='ایمیل', widget=forms.EmailInput(
         attrs={
@@ -36,7 +32,7 @@ class ContactUsForm(forms.ModelForm):
             'placeholder': 'ایمیل',
             'required': 'required'
 
-        }))
+        }), required=True)
     message = forms.CharField(label='متن پیام', widget=forms.Textarea(
         attrs={
             'class': 'clear full',
@@ -45,10 +41,9 @@ class ContactUsForm(forms.ModelForm):
 
             # 'rows': 5
             # 'id': 'message'
-        },
+        }),
         required=True
-
-    ))
+     )
     captcha = CaptchaField(
         widget=CustomCaptchaTextInput,
         error_messages={'required': 'کد امنیتی را وارد کنید'},  # تغییر در این پیام خطا
