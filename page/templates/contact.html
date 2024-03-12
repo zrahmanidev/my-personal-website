@@ -1,6 +1,6 @@
 {% extends 'master.html' %}
 {% block title %}
-{{ SEO_TITLE }}
+    {{ SEO_TITLE }}
 {% endblock %}
 {% block content %}
     <div id="id_contact" style="display: block; position: static; visibility: visible;" class="active">
@@ -35,13 +35,13 @@
         <!-- end breadcumb -->
 
         <!-- start google map -->
-        <div class="container_940">
-            <div class="grid_940">
-                <iframe class="google_map_iframe"
-                        src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Plaza+Bapindo&amp;aq=&amp;sll=37.0625,-95.677068&amp;sspn=34.176059,86.572266&amp;ie=UTF8&amp;hq=Plaza+Bapindo&amp;hnear=&amp;radius=15000&amp;ll=-6.22396,106.807612&amp;spn=0.071946,0.071946&amp;t=m&amp;output=embed"></iframe>
-            </div>
-            <div class="clear"></div>
-        </div>
+{#        <div class="container_940">#}
+{#            <div class="grid_940">#}
+{#                <iframe class="google_map_iframe"#}
+{#                        src="https://maps.google.com/maps?f=q&amp;source=s_q&amp;hl=en&amp;geocode=&amp;q=Plaza+Bapindo&amp;aq=&amp;sll=37.0625,-95.677068&amp;sspn=34.176059,86.572266&amp;ie=UTF8&amp;hq=Plaza+Bapindo&amp;hnear=&amp;radius=15000&amp;ll=-6.22396,106.807612&amp;spn=0.071946,0.071946&amp;t=m&amp;output=embed"></iframe>#}
+{#            </div>#}
+{#            <div class="clear"></div>#}
+{#        </div>#}
         <!-- end google map -->
         <!-- start contact form -->
         <div class="container_940 widget">
@@ -132,51 +132,25 @@
                         خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید.
                     </p>
 
-                    <form id="form_contact" method="post" novalidate="novalidate">
+                    <form id="form_contact" method="post">
                         {% csrf_token %}
                         <div class="div_240">
-                            <label>نام</label>
-                            <div>
-                                <input class="full" type="text" name="name">
-                                <div class="clear"></div>
-                            </div>
-                            <label>ایمیل</label>
-                            <div>
-                                <input class="full" type="text" name="email">
-                                <div class="clear"></div>
-                            </div>
-                            <label>موضوع</label>
-                            <div>
-                                <input class="full" type="text" name="subject">
-                                <div class="clear"></div>
-                            </div>
-                            <div class="clear"></div>
+                            {{ form.name }}
 
+                            {{ form.subject }}
+
+                            {{ form.email }}
+
+                            {{ form.captcha }}
+                            {{ form.captcha.error_messages }}
                         </div>
                         <div class="div_370">
-                            <label>پیام</label>
-                            <div>
-                                <textarea name="message" class="full"></textarea>
-                            </div>
-                            <div>
-
-                            </div>
+                            {{ form.message }}
                         </div>
-                        <div class="clear"></div>
-                        <div class="div_240">
-                            <label>کپچا</label>
-                            <div>
 
-                                <div class="div_captcha right"><input class="captcha left" type="text"
-                                                                      placeholder="3 + 4 = ?" name="input_captcha">
-                                </div>
-                                <div class="left"><input class="left btn_submit" type="submit" value="ارسال نامه"></div>
-                                <div class="clear"></div>
-                            </div>
-
-                            <div class="clear"></div>
-                        </div>
+                        <div class="left"><input class="left btn_submit" type="submit" value="ارسال نامه"></div>
                         <div class="clear"></div>
+
                     </form>
                 </div>
             </div>
@@ -185,3 +159,48 @@
         <!-- end contact form -->
     </div>
 {% endblock %}
+
+<form id="form_contact" method="post" novalidate="novalidate">
+    <div class="div_240">
+        <label>نام</label>
+        <div>
+            <input class="full" type="text" name="input_name">
+            <div class="clear"></div>
+        </div>
+        <label>ایمیل</label>
+        <div>
+            <input class="full" type="text" name="input_email">
+            <div class="clear"></div>
+        </div>
+        <label>موضوع</label>
+        <div>
+            <input class="full" type="text" name="input_subject">
+            <div class="clear"></div>
+        </div>
+        <div class="clear"></div>
+
+    </div>
+    <div class="div_370">
+        <label>پیام</label>
+        <div>
+            <textarea name="input_message" class="full"></textarea>
+        </div>
+        <div>
+
+        </div>
+    </div>
+    <div class="clear"></div>
+    <div class="div_240">
+        <label>کپچا</label>
+        <div>
+
+            <div class="div_captcha right"><input class="captcha left" type="text" placeholder="3 + 4 = ?"
+                                                  name="input_captcha"></div>
+            <div class="left"><input class="left btn_submit" type="submit" value="ارسال نامه"></div>
+            <div class="clear"></div>
+        </div>
+
+        <div class="clear"></div>
+    </div>
+    <div class="clear"></div>
+</form>
