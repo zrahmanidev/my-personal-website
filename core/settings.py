@@ -42,7 +42,8 @@ INSTALLED_APPS = [
     'page',
     'blog',
     'account',
-    'resume'
+    'resume',
+    'captcha'
 ]
 
 MIDDLEWARE = [
@@ -83,16 +84,9 @@ DATABASES = {
         'ENGINE': 'django.db.backends.sqlite3',
         'NAME': BASE_DIR / 'db.sqlite3',
     },
-#     'default': {
-#         'ENGINE': os.getenv('DATABASE_TYPE'),
-#         'NAME': os.getenv('DATABASE_NAME'),
-#         'USER': os.getenv('DATABASE_USERNAME'),
-#         'PASSWORD': os.getenv('DATABASE_PASSWORD'),
-#         'HOST': os.getenv('DATABASE_HOST'),
-#         'PORT': os.getenv('DATABASE_PORT'),
-#     }
-# 'default': dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 }
+if os.getenv('APP_ENV') == 'production':
+    DATABASES['default'] = dj_database_url.config(default=os.environ.get('DATABASE_URL'))
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
