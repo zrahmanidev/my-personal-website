@@ -11,3 +11,48 @@ qrcode
 Pillow
 dj-database-url
 persian-tools
+
+
+  <div class="div_240">
+                            <label>نام</label>
+                            <div>
+                                <input class="full" type="text" name="name">
+                                <div class="clear"></div>
+                            </div>
+                            <label>ایمیل</label>
+                            <div>
+                                <input class="full" type="text" name="email">
+                                <div class="clear"></div>
+                            </div>
+                            <label>موضوع</label>
+                            <div>
+                                <input class="full" type="text" name="subject">
+                                <div class="clear"></div>
+                            </div>
+                            <div class="clear"></div>
+
+                        </div>
+                        <div class="div_370">
+                            <label>پیام</label>
+                            <div>
+                                <textarea name="message" class="full"></textarea>
+                            </div>
+                            <div>
+
+                            </div>
+                        </div>
+                        <div class="clear"></div>
+                        <div class="div_240">
+                            <label>کپچا</label>
+                            <div>
+
+                                <div class="div_captcha right"><input class="captcha left" type="text"
+                                                                      placeholder="3 + 4 = ?" name="input_captcha">
+                                </div>
+                                <div class="left"><input class="left btn_submit" type="submit" value="ارسال نامه"></div>
+                                <div class="clear"></div>
+                            </div>
+
+                            <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
