@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'blog',
     'account',
     'resume',
-    'captcha'
+    'captcha',
+    'slider'
 ]
 
 MIDDLEWARE = [
@@ -126,7 +127,7 @@ STATICFILES_DIRS = [
 ]
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 
-MEDIA_URL = '/uploads/'
+MEDIA_URL = os.getenv('MEDIA_URL')
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'uploads')
 

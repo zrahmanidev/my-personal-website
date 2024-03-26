@@ -1,226 +1,221 @@
 {% extends 'master.html' %}
 {% load static %}
 {% block title %}
-	{{ SEO_TITLE }}
+    {{ SEO_TITLE }}
 {% endblock %}
 
 {% block content %}
-	<!-- start HOME -->
-			<div id="id_home">
-				<div class="border_full bg_home">&nbsp;</div>
-				<div class="container_940 widget">
-					<div class="grid_940 home_info_mb">
-						<div class="div_210">
-							<div id="photo_slider_div">
+    <!-- start HOME -->
+    <div id="id_home">
+        <div class="border_full bg_home">&nbsp;</div>
+        <div class="container_940 widget">
+            <div class="grid_940 home_info_mb">
+                <div class="div_210">
+                    <div id="photo_slider_div">
 
-								<div id="photo_slider_bg">
-									<ul id="photo_slider">
-										<li>
-											<img src="{% static 'public/images/home/profile_pic_1.png' %}" alt="" />
-										</li>
-										<li>
-											<img src="{% static 'public/images/home/profile_pic_2.png' %}" alt="" />
-										</li>
-										<li>
-											<img src="{% static 'public/images/home/profile_pic_3.png' %}" alt="" />
-										</li>
-										<li>
-											<img src="{% static 'public/images/home/profile_pic_4.png' %}" alt="" />
-										</li>
-										<li>
-											<img src="{% static 'public/images/home/profile_pic_5.png' %}" alt="" />
-										</li>
-									</ul>
-								</div>
+                        <div id="photo_slider_bg">
+                            <ul id="photo_slider">
+                                {% for slide in slides %}
+                                    <li>
+                                        <img src="/uploads/{{ slide.image }}" alt=""/>
+                                    </li>
+                                {% endfor %}
 
-							</div>
-						</div>
-						<div class="div_730">
-							<div class="home_info">
-								<div class="full text_align_center">
-									<h1>به سایت من خوش آمدید!</h1>
-									<h2>توضیحات خود را در این قسمت بنویسید. </h2>
-									<h3>توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. </h3>
-								</div>
-								<p>توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید.
-				  توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. </p>
-							</div>
-						</div>
-						<div class="clear"></div>
-					</div>
-					<div class="clear"></div>
-					<div class="grid_940">
-						<div class="one_third">
-							<ul class="ul_info">
-								<li>
-									<div class="label">نام</div>
-									<div class="span">{{ about.first_name}} {{about.last_name }}</div>
-									<div class="clear"></div>
-								</li>
-								<li>
-									<div class="label">تلفن</div>
-									<div class="span">{{ about.phone}}</div>
-									<div class="clear"></div>
-								</li>
-								<li>
-									<div class="label">وب</div>
-									<div class="span">{{ about.web }}</div>
-									<div class="clear"></div>
-								</li>
-							</ul>
-						</div>
-						<div class="one_third">
-							<ul class="ul_info">
-								<li>
-									<div class="label">تولد</div>
-									<div class="span">{{ about.birthday }}</div>
-									<div class="clear"></div>
-								</li>
-								<li>
-									<div class="label">فکس</div>
-									<div class="span">{{ about.fax|default:'-' }}</div>
-									<div class="clear"></div>
-								</li>
-								<li>
-									<div class="label">استخدام</div>
-									<div class="span">{{ about.employ }}</div>
-									<div class="clear"></div>
-								</li>
-							</ul>
-						</div>
-						<div class="one_third_last">
-							<ul class="ul_info">
-								<li>
-									<div class="label">سرگرمی</div>
-									<div class="span">{{ about.Entertainment|default:"-" }}</div>
-									<div class="clear"></div>
-								</li>
-								<li>
-									<div class="label">ایمیل</div>
-									<div class="span">{{ about.email }}</div>
-									<div class="clear"></div>
-								</li>
-								<li>
-									<div class="label">آدرس</div>
-									<div class="span">{{ about.address }}</div>
-									<div class="clear"></div>
-								</li>
-							</ul>
-						</div>
-					</div>
-					<div class="clear"></div>
-					<div class="home_info_footer_mb"></div>
-				</div>
-			</div>
-			<!-- ends HOME -->
 
-			<!-- start HOME -->
-{#			<div id="id_home">#}
-{#				<div class="border_full bg_home">&nbsp;</div>#}
-{#				<div class="container_940 widget">#}
-{#					<div class="grid_940 home_info_mb">#}
-{#						<div class="div_210">#}
-{#							<div id="photo_slider_div">#}
-{#								#}
-{#								<div id="photo_slider_bg">#}
-{#									<ul id="photo_slider">#}
-{#										<li>#}
-{#											<img src="public/images/home/profile_pic_1.png" alt="" />#}
-{#										</li>#}
-{#										<li>#}
-{#											<img src="public/images/home/profile_pic_2.png" alt="" />#}
-{#										</li>#}
-{#										<li>#}
-{#											<img src="public/images/home/profile_pic_3.png" alt="" />#}
-{#										</li>#}
-{#										<li>#}
-{#											<img src="public/images/home/profile_pic_4.png" alt="" />#}
-{#										</li>#}
-{#										<li>#}
-{#											<img src="public/images/home/profile_pic_5.png" alt="" />#}
-{#										</li>#}
-{#									</ul>#}
-{#								</div>#}
-{#								#}
-{#							</div>#}
-{#						</div>#}
-{#						<div class="div_730">#}
-{#							<div class="home_info">#}
-{#								<div class="full text_align_center">#}
-{#									<h1>به سایت من خوش آمدید!</h1>#}
-{#									<h2>توضیحات خود را در این قسمت بنویسید. </h2>#}
-{#									<h3>توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. </h3>#}
-{#								</div>#}
-{#								<p>توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید.  #}
-{#				  توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. </p>#}
-{#							</div>#}
-{#						</div>#}
-{#						<div class="clear"></div>#}
-{#					</div>#}
-{#					<div class="clear"></div>#}
-{#					<div class="grid_940">#}
-{#						<div class="one_third">#}
-{#							<ul class="ul_info">#}
-{#								<li>#}
-{#									<div class="label">نام </div> #}
-{#									<div class="span">مسیح ایرانی</div>#}
-{#									<div class="clear"></div>#}
-{#								</li>#}
-{#								<li>#}
-{#									<div class="label">تلفن</div> #}
-{#									<div class="span">62 813 98123139</div>#}
-{#									<div class="clear"></div>#}
-{#								</li>#}
-{#								<li>#}
-{#									<div class="label">وب</div> #}
-{#									<div class="span">WWWW.tarahwebsite.com</div>#}
-{#									<div class="clear"></div>#}
-{#								</li>#}
-{#							</ul>#}
-{#						</div>#}
-{#						<div class="one_third">#}
-{#							<ul class="ul_info">#}
-{#								<li>#}
-{#									<div class="label">تولد</div> #}
-{#									<div class="span">25 شهریور 1360</div>#}
-{#									<div class="clear"></div>#}
-{#								</li>#}
-{#								<li>#}
-{#									<div class="label">فکس</div> #}
-{#									<div class="span">62 813 98123139</div>#}
-{#									<div class="clear"></div>#}
-{#								</li>#}
-{#								<li>#}
-{#									<div class="label">استخدام</div> #}
-{#									<div class="span">آزاد</div>#}
-{#									<div class="clear"></div>#}
-{#								</li>#}
-{#							</ul>#}
-{#						</div>#}
-{#						<div class="one_third_last">#}
-{#							<ul class="ul_info">#}
-{#								<li>#}
-{#									<div class="label">سرگرمی</div> #}
-{#									<div class="span">شنا و ماهی گیری</div>#}
-{#									<div class="clear"></div>#}
-{#								</li>#}
-{#								<li>#}
-{#									<div class="label">ایمیل</div> #}
-{#									<div class="span">INFO@tarahwebsite.com</div>#}
-{#									<div class="clear"></div>#}
-{#								</li>#}
-{#								<li>#}
-{#									<div class="label">آدرس</div> #}
-{#									<div class="span">تهران، خیابان ولیعصر، کوچه 12 پلاک 2</div>#}
-{#									<div class="clear"></div>#}
-{#								</li>#}
-{#							</ul>#}
-{#						</div>#}
-{#					</div>#}
-{#					<div class="clear"></div>#}
-{#					<div class="home_info_footer_mb"></div>#}
-{#				</div>#}
-{#			</div>#}
-			<!-- ends HOME -->
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="div_730">
+                    <div class="home_info">
+                        <div class="full text_align_center">
+                            <h1>به سایت من خوش آمدید!</h1>
+                            <h2>توضیحات خود را در این قسمت بنویسید. </h2>
+                            <h3>توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. </h3>
+                        </div>
+                        <p>توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این
+                            قسمت بنویسید. توضیحات خود را در این قسمت بنویسید.
+                            توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات خود را در
+                            این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید.
+                            توضیحات خود را در این قسمت بنویسید. </p>
+                    </div>
+                </div>
+                <div class="clear"></div>
+            </div>
+            <div class="clear"></div>
+            <div class="grid_940">
+                <div class="one_third">
+                    <ul class="ul_info">
+                        <li>
+                            <div class="label">نام</div>
+                            <div class="span">{{ about.first_name }} {{ about.last_name }}</div>
+                            <div class="clear"></div>
+                        </li>
+                        <li>
+                            <div class="label">تلفن</div>
+                            <div class="span">{{ about.phone }}</div>
+                            <div class="clear"></div>
+                        </li>
+                        <li>
+                            <div class="label">وب</div>
+                            <div class="span">{{ about.web }}</div>
+                            <div class="clear"></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="one_third">
+                    <ul class="ul_info">
+                        <li>
+                            <div class="label">تولد</div>
+                            <div class="span">{{ about.birthday }}</div>
+                            <div class="clear"></div>
+                        </li>
+                        <li>
+                            <div class="label">فکس</div>
+                            <div class="span">{{ about.fax|default:'-' }}</div>
+                            <div class="clear"></div>
+                        </li>
+                        <li>
+                            <div class="label">استخدام</div>
+                            <div class="span">{{ about.employ }}</div>
+                            <div class="clear"></div>
+                        </li>
+                    </ul>
+                </div>
+                <div class="one_third_last">
+                    <ul class="ul_info">
+                        <li>
+                            <div class="label">سرگرمی</div>
+                            <div class="span">{{ about.Entertainment|default:"-" }}</div>
+                            <div class="clear"></div>
+                        </li>
+                        <li>
+                            <div class="label">ایمیل</div>
+                            <div class="span">{{ about.email }}</div>
+                            <div class="clear"></div>
+                        </li>
+                        <li>
+                            <div class="label">آدرس</div>
+                            <div class="span">{{ about.address }}</div>
+                            <div class="clear"></div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="clear"></div>
+            <div class="home_info_footer_mb"></div>
+        </div>
+    </div>
+    <!-- ends HOME -->
+
+    <!-- start HOME -->
+    {#			<div id="id_home">#}
+    {#				<div class="border_full bg_home">&nbsp;</div>#}
+    {#				<div class="container_940 widget">#}
+    {#					<div class="grid_940 home_info_mb">#}
+    {#						<div class="div_210">#}
+    {#							<div id="photo_slider_div">#}
+    {#								#}
+    {#								<div id="photo_slider_bg">#}
+    {#									<ul id="photo_slider">#}
+    {#										<li>#}
+    {#											<img src="public/images/home/profile_pic_1.png" alt="" />#}
+    {#										</li>#}
+    {#										<li>#}
+    {#											<img src="public/images/home/profile_pic_2.png" alt="" />#}
+    {#										</li>#}
+    {#										<li>#}
+    {#											<img src="public/images/home/profile_pic_3.png" alt="" />#}
+    {#										</li>#}
+    {#										<li>#}
+    {#											<img src="public/images/home/profile_pic_4.png" alt="" />#}
+    {#										</li>#}
+    {#										<li>#}
+    {#											<img src="public/images/home/profile_pic_5.png" alt="" />#}
+    {#										</li>#}
+    {#									</ul>#}
+    {#								</div>#}
+    {#								#}
+    {#							</div>#}
+    {#						</div>#}
+    {#						<div class="div_730">#}
+    {#							<div class="home_info">#}
+    {#								<div class="full text_align_center">#}
+    {#									<h1>به سایت من خوش آمدید!</h1>#}
+    {#									<h2>توضیحات خود را در این قسمت بنویسید. </h2>#}
+    {#									<h3>توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. </h3>#}
+    {#								</div>#}
+    {#								<p>توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید.  #}
+    {#				  توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. توضیحات خود را در این قسمت بنویسید. </p>#}
+    {#							</div>#}
+    {#						</div>#}
+    {#						<div class="clear"></div>#}
+    {#					</div>#}
+    {#					<div class="clear"></div>#}
+    {#					<div class="grid_940">#}
+    {#						<div class="one_third">#}
+    {#							<ul class="ul_info">#}
+    {#								<li>#}
+    {#									<div class="label">نام </div> #}
+    {#									<div class="span">مسیح ایرانی</div>#}
+    {#									<div class="clear"></div>#}
+    {#								</li>#}
+    {#								<li>#}
+    {#									<div class="label">تلفن</div> #}
+    {#									<div class="span">62 813 98123139</div>#}
+    {#									<div class="clear"></div>#}
+    {#								</li>#}
+    {#								<li>#}
+    {#									<div class="label">وب</div> #}
+    {#									<div class="span">WWWW.tarahwebsite.com</div>#}
+    {#									<div class="clear"></div>#}
+    {#								</li>#}
+    {#							</ul>#}
+    {#						</div>#}
+    {#						<div class="one_third">#}
+    {#							<ul class="ul_info">#}
+    {#								<li>#}
+    {#									<div class="label">تولد</div> #}
+    {#									<div class="span">25 شهریور 1360</div>#}
+    {#									<div class="clear"></div>#}
+    {#								</li>#}
+    {#								<li>#}
+    {#									<div class="label">فکس</div> #}
+    {#									<div class="span">62 813 98123139</div>#}
+    {#									<div class="clear"></div>#}
+    {#								</li>#}
+    {#								<li>#}
+    {#									<div class="label">استخدام</div> #}
+    {#									<div class="span">آزاد</div>#}
+    {#									<div class="clear"></div>#}
+    {#								</li>#}
+    {#							</ul>#}
+    {#						</div>#}
+    {#						<div class="one_third_last">#}
+    {#							<ul class="ul_info">#}
+    {#								<li>#}
+    {#									<div class="label">سرگرمی</div> #}
+    {#									<div class="span">شنا و ماهی گیری</div>#}
+    {#									<div class="clear"></div>#}
+    {#								</li>#}
+    {#								<li>#}
+    {#									<div class="label">ایمیل</div> #}
+    {#									<div class="span">INFO@tarahwebsite.com</div>#}
+    {#									<div class="clear"></div>#}
+    {#								</li>#}
+    {#								<li>#}
+    {#									<div class="label">آدرس</div> #}
+    {#									<div class="span">تهران، خیابان ولیعصر، کوچه 12 پلاک 2</div>#}
+    {#									<div class="clear"></div>#}
+    {#								</li>#}
+    {#							</ul>#}
+    {#						</div>#}
+    {#					</div>#}
+    {#					<div class="clear"></div>#}
+    {#					<div class="home_info_footer_mb"></div>#}
+    {#				</div>#}
+    {#			</div>#}
+    <!-- ends HOME -->
 {% endblock %}
 
