@@ -17,7 +17,10 @@
                             <ul id="photo_slider">
                                 {% for slide in slides %}
                                     <li>
-                                        <img src="/uploads/{{ slide.image }}" alt=""/>
+                                        <a href="{{ slide.target_url }}">
+                                            <img src="/uploads/{{ slide.image }}" alt=""/>
+                                            <p>{{ slide.caption }}</p>
+                                        </a>
                                     </li>
                                 {% endfor %}
 
