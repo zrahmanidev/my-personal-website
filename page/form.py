@@ -24,8 +24,8 @@ class ContactUsForm(forms.ModelForm):
     subject = forms.CharField(label='عنوان', widget=forms.TextInput(attrs={
         'class': 'clear full', 'placeholder': 'موضوع', 'required': 'required'
     }),
-                              required=True
-                              )
+     required=True
+    )
     email = forms.EmailField(label='ایمیل', widget=forms.EmailInput(
         attrs={
             'class': 'clear full',
