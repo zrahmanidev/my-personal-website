@@ -13,10 +13,6 @@
     {
       "name": "uploads",
       "mountTo": "uploads"
-    },
-    {
-      "name": "temp",
-      "mountTo": "/tmp"
     }
   ]
 }
