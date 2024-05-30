@@ -8,7 +8,7 @@
     "mirror": true,
     "geospatial": false
   },
-  "app": "app_name",
+  "app": "zahradev",
   "disks": [
     {
       "name": "uploads",
